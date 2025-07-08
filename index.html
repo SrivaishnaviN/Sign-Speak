@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignSpeak - ISL to Text/Speech Translator</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Linking CSS file -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="assets/logo.png" alt="SignSpeak Logo" class="logo">
+            </div>
+            <div class="site-name">
+                <h1>SignSpeak</h1>
+                <p>ISL Translator</p>
+            </div>
+        </div>
+        <nav>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#demo">Demo</a>
+                <a href="#features">Benefits</a>
+                <a href="#main-features">Main Features</a>
+                <a href="#about">About</a>
+
+                <div class="auth-links">
+                    <a href="./login.html" class="login-link">Log In</a>
+                    <a href="./register.html" class="register-link">Register</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="./assets/slide1.jpg" alt="Slide 1">
+            </div>
+            <div class="mySlides fade">
+                <img src="./assets/slide2.jpg" alt="Slide 2">
+            </div>
+            <div class="mySlides fade">
+                <img src="./assets/slide3.jpg" alt="Slide 3">
+            </div>
+        </div>
+        
+        <div class="hero-content">
+            <h1>Indian Sign Language to Text/Speech Translator</h1>
+            <p>Enabling communication and inclusion for the deaf and hard-of-hearing community.</p>
+            <div class="hero-buttons">
+                <button onclick="location.href='#demo'" class="primary-btn">Try the Demo</button>
+                <button onclick="location.href='./learn.html'" class="secondary-btn learn-btn"><i class="fas fa-graduation-cap"></i> Learn ISL</button>
+                <button onclick="location.href='./call.html'" class="secondary-btn call-btn"><i class="fas fa-video"></i> Video Call</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="demo" class="demo">
+        <h2>Live Demo</h2>
+        <div id="demo-container">
+            <div class="webcam-container">
+                <div class="camera-controls">
+                    <button id="request-camera-btn" class="camera-btn">
+                        <i class="fas fa-camera"></i> Enable Camera
+                    </button>
+                </div>
+                <video id="webcam" autoplay playsinline muted></video>
+                <canvas id="output-canvas"></canvas>
+                <div class="camera-overlay">
+                    <div class="camera-guide"></div>
+                </div>
+                <div id="camera-error" class="camera-error-message">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Camera not available. Please check permissions and refresh.</span>
+                    <button onclick="window.location.reload()">Retry</button>
+                </div>
+            </div>
+            <div id="output">
+                <h3>Detected Gesture</h3>
+                <div id="gesture-text">Initializing...</div>
+                <div class="controls">
+                    <button onclick="speakText()" class="speak-btn">
+                        <span class="icon">🔊</span> Speak
+                    </button>
+                </div>
+                <div class="instructions">
+                    <h4>How to Use:</h4>
+                    <ol>
+                        <li>Allow camera access when prompted</li>
+                        <li>Position your hand in the camera view</li>
+                        <li>Make ISL gestures clearly</li>
+                        <li>View the detected text below</li>
+                        <li>Click "Speak" to hear the translation</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2>Key Benefits</h2>
+        <div class="feature-list">
+            <div class="feature-item">
+                <h3>Real-Time Translation</h3>
+                <p>Experience seamless communication with instant ISL to text/speech conversion using advanced AI.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Multi-Language Support</h3>
+                <p>Translate ISL gestures into multiple Indian languages with high accuracy and reliability.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Educational Integration</h3>
+                <p>Perfect for educational institutions to support students with hearing impairments in their learning journey.</p>
+            </div>
+        </div>
+    </section>
+
+     <section id="main-features" class="main-features">
+        <h2>Main Features</h2>
+        <div class="main-features-container">
+            <div class="main-feature-card video-call">
+                <div class="feature-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Video Calling with ISL Support</h3>
+                    <p>Connect with others through video calls with real-time Indian Sign Language translation. Breaking communication barriers has never been easier!</p>
+                    <ul class="feature-benefits">
+                        <li><i class="fas fa-check"></i> Real-time ISL translation during calls</li>
+                        <li><i class="fas fa-check"></i> Text transcription of signed conversations</li>
+                        <li><i class="fas fa-check"></i> Share calls with multiple participants</li>
+                    </ul>
+                    <a href="./call.html" class="feature-btn">Start Video Call <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="main-feature-card isl-learning">
+                <div class="feature-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Learn Indian Sign Language</h3>
+                    <p>Master Indian Sign Language through our interactive learning platform. Perfect for beginners and those looking to improve their signing skills.</p>
+                    <ul class="feature-benefits">
+                        <li><i class="fas fa-check"></i> Interactive tutorials with video demonstrations</li>
+                        <li><i class="fas fa-check"></i> Practice exercises with feedback</li>
+                        <li><i class="fas fa-check"></i> Track your learning progress</li>
+                    </ul>
+                    <a href="./learn.html" class="feature-btn">Start Learning <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About SignSpeak</h2>
+        <p>
+            SignSpeak is an innovative solution designed to bridge the communication gap between the hearing and the deaf or hard-of-hearing community. By translating Indian Sign Language (ISL) into text and speech in real-time, SignSpeak empowers users to communicate effortlessly across language barriers.
+        </p>
+        <h3>Key USPs:</h3>
+        <ul>
+            <li><strong>Real-Time Translation:</strong> Fast and accurate conversion of ISL gestures to text and speech.</li>
+            <li><strong>Multilingual Support:</strong> Supports output in multiple Indian languages.</li>
+            <li><strong>Scalable & Flexible:</strong> Designed for use in various scenarios, including online education, social interaction, and professional environments.</li>
+            <li><strong>Educational Integration:</strong> Seamless integration with online learning platforms to enhance accessibility for disabled students.</li>
+        </ul>
+        <h3>Feasibility:</h3>
+        <p>
+            SignSpeak is a versatile and scalable platform that can be deployed across various sectors, from education to law enforcement. Its robust technology ensures high accuracy and adaptability, making it an essential tool for improving accessibility and inclusivity in communication.
+        </p>
+    </section>
+
+    <footer id="contact" class="footer">
+        <div class="footer-content">
+            <p>Contact: +91 294827391</p>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('request-camera-btn').onclick = function() {
+            const video = document.getElementById('webcam');
+            const canvas = document.getElementById('output-canvas');
+            const cameraError = document.getElementById('camera-error');
+            const cameraBtn = this;
+
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    video.srcObject = stream;
+                    video.classList.add('active');
+                    canvas.classList.add('active');
+                    cameraError.style.display = 'none';
+                    cameraBtn.innerHTML = '<i class="fas fa-camera"></i> Camera Enabled';
+                    cameraBtn.disabled = true;
+                    cameraBtn.style.opacity = '0.7';
+                })
+                .catch(err => {
+                    cameraError.style.display = 'block';
+                    video.classList.remove('active');
+                    canvas.classList.remove('active');
+                });
+        };
+
+        function speakText() {
+            const text = document.getElementById('gesture-text').textContent;
+            if (text && text !== 'Initializing...') {
+                const utterance = new SpeechSynthesisUtterance(text);
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+    </script>
+</body>
+</html>

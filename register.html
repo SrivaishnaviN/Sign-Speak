@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - SignSpeak ISL Translator</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Linking CSS file -->
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./auth.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="assets/logo.png" alt="Signify Logo" class="logo">
+            </div>
+            <div class="site-name">
+                <h1>SignSpeak</h1>
+                <p>ISL Translator</p>
+            </div>
+        </div>
+        <nav>
+            <div class="nav-links">
+                <a href="./index.html">Home</a>
+                <a href="./index.html#main-features">Main Features</a>
+                <a href="./index.html#features">Benefits</a>
+                <a href="./index.html#demo">Demo</a>
+                <a href="./index.html#about">About</a>
+
+            </div>
+        </nav>
+    </header>
+
+    <section class="auth-section">
+        <div class="auth-container">
+            <h2>Create an Account</h2>
+            <p class="auth-description">Join SignSpeak to access all features and services.</p>
+            
+            <form id="register-form" class="auth-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="first-name"><i class="fas fa-user"></i> First Name</label>
+                        <input type="text" id="first-name" name="firstName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="last-name"><i class="fas fa-user"></i> Last Name</label>
+                        <input type="text" id="last-name" name="lastName" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password"><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="password" name="password" required minlength="8">
+                    <span class="password-toggle" onclick="togglePasswordVisibility('password')">
+                        <i class="fas fa-eye"></i>
+                    </span>
+                    <div class="password-strength">
+                        <div class="strength-meter">
+                            <div class="strength-meter-fill" id="strength-meter-fill"></div>
+                        </div>
+                        <div class="strength-text" id="strength-text">Password strength</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirm-password"><i class="fas fa-lock"></i> Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirmPassword" required minlength="8">
+                    <span class="password-toggle" onclick="togglePasswordVisibility('confirm-password')">
+                        <i class="fas fa-eye"></i>
+                    </span>
+                </div>
+                
+                <div class="form-group terms">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="auth-button">Create Account</button>
+                </div>
+                
+                <div class="auth-separator">
+                    <span>OR</span>
+                </div>
+                
+                <div class="social-login">
+                    <button type="button" class="social-button google">
+                        <i class="fab fa-google"></i> Continue with Google
+                    </button>
+                </div>
+                
+                <div class="auth-redirect">
+                    Already have an account? <a href="./login.html">Log in</a>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="./auth.js"></script>
+    <script>
+        function togglePasswordVisibility(inputId) {
+            const passwordInput = document.getElementById(inputId);
+            const eyeIcon = passwordInput.nextElementSibling.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        }
+
+        // Password strength meter
+        const passwordInput = document.getElementById('password');
+        const strengthMeter = document.getElementById('strength-meter-fill');
+        const strengthText = document.getElementById('strength-text');
+
+        passwordInput.addEventListener('input', updateStrengthMeter);
+
+        function updateStrengthMeter() {
+            const password = passwordInput.value;
+            let strength = 0;
+            let feedback = '';
+
+            if (password.length >= 8) {
+                strength += 25;
+            }
+            if (password.match(/[A-Z]/)) {
+                strength += 25;
+            }
+            if (password.match(/[0-9]/)) {
+                strength += 25;
+            }
+            if (password.match(/[^A-Za-z0-9]/)) {
+                strength += 25;
+            }
+
+            strengthMeter.style.width = strength + '%';
+
+            if (strength <= 25) {
+                strengthMeter.style.backgroundColor = '#ff4d4d';
+                feedback = 'Weak';
+            } else if (strength <= 50) {
+                strengthMeter.style.backgroundColor = '#ffa64d';
+                feedback = 'Fair';
+            } else if (strength <= 75) {
+                strengthMeter.style.backgroundColor = '#4dff4d';
+                feedback = 'Good';
+            } else {
+                strengthMeter.style.backgroundColor = '#3a86ff';
+                feedback = 'Strong';
+            }
+
+            strengthText.textContent = feedback;
+        }
+    </script>
+</body>
+</html> 
